@@ -31,6 +31,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 #define OAES_DEBUG 1
 #include "oaes_lib.h"
@@ -288,7 +289,7 @@ static OAES_RET _do_aes_decrypt(do_block *b)
   _rc = oaes_decrypt( ctx,
     b->in, b->in_len,
     NULL, &(b->out_len),
-    NULL, NULL );
+    NULL, 0 );
   if( OAES_RET_SUCCESS != _rc )
   {
     fprintf(stderr, "Error: Failed to decrypt.\n");
@@ -787,8 +788,8 @@ int main(int argc, char** argv)
   }
 
   _i = 0;
-  while( _b.in_len =
-    fread(_b.in, sizeof(uint8_t), _read_len, _f_in) )
+  while( (_b.in_len =
+    fread(_b.in, sizeof(uint8_t), _read_len, _f_in)) )
   {
     switch(_op)
     {

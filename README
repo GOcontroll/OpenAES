@@ -45,6 +45,11 @@ be easily integrated into applications.
 Compiling
 ---------
 
+## compiling with zig
+
+Build the oaes binary for your host architecture with `zig build`  
+Build the the library and the binary for the GOcontroll Moduline with `zig build -Dtarget=aarch64-linux-gnu.2.31`  
+
 OpenAES has been tested with the GCC as well as VC compilers.  It is
 necessary to compile the source files located in ./src, and to add ./inc to
 the include paths.

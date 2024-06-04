@@ -36,6 +36,7 @@ static const char _NR[] = {
 #include <time.h> 
 #include <sys/timeb.h>
 #include <string.h>
+#include <unistd.h>
 
 #ifdef WIN32
 #include <process.h>
@@ -46,6 +47,7 @@ static const char _NR[] = {
 
 #ifdef OAES_HAVE_ISAAC
 #include "rand.h"
+
 #define OAES_RAND(x) rand(x)
 #else
 #define OAES_RAND(x) rand()
