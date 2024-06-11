@@ -2,6 +2,7 @@ const std = @import("std");
 
 pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
+
     const lib = b.addStaticLibrary(.{
         .name = "oaes",
         .target = target,
@@ -36,8 +37,14 @@ pub fn build(b: *std.Build) void {
 
     lib.addIncludePath(.{ .cwd_relative = "src/isaac" });
     lib.addIncludePath(.{ .cwd_relative = "inc" });
+    lib.installHeader(.{ .cwd_relative = "inc/oaes_lib.h" }, "oeas_lib.h");
+    lib.installHeader(.{ .cwd_relative = "inc/oaes_config.h" }, "oaes_config.h");
+    lib.installHeader(.{ .cwd_relative = "inc/oaes_common.h" }, "oaes_common.h");
+    lib.installHeader(.{ .cwd_relative = "inc/oaes_base64.h" }, "oaes_base64.h");
+
     exe.addIncludePath(.{ .cwd_relative = "inc" });
     exe.linkLibrary(lib);
+
     b.installArtifact(lib);
     b.installArtifact(exe);
 }
