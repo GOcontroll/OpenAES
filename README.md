@@ -12,6 +12,7 @@ be easily integrated into applications.
 
 ## compiling with zig
 
+confirmed to work with 0.12.0 and 0.13.0
 Build the oaes binary for your host architecture with `zig build`  
 Build the the library and the binary for the GOcontroll Moduline with `zig build -Dtarget=aarch64-linux-gnu.2.31`  
 
